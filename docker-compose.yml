@@ -10,6 +10,7 @@ services:
       - MONIKER=Regen-Node
       - CHAIN_ID=regen-test-1001
       - GENESIS_URL=https://raw.githubusercontent.com/regen-network/testnets/master/regen-test-1001/genesis.json
+      - VERSION=v0.4.1
     restart: always
     ports:
       - "26656:26656"

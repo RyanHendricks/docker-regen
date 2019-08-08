@@ -3,7 +3,7 @@ jobs:
   build:
     environment:
       IMAGE_NAME: ryanhendricks/docker-regen
-      VERSION: v0.14.0
+      VERSION: v0.4.1
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
