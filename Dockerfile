@@ -29,7 +29,6 @@ RUN apk add --no-cache --update ca-certificates supervisor
 # Temp directory for copying binaries
 RUN mkdir -p /tmp/bin
 WORKDIR /tmp/bin
-RUN ls
 
 # Copy over binaries from the build-env
 COPY --from=build-env /go/bin/xrnd /tmp/bin
