@@ -1,9 +1,8 @@
-FROM golang:1.12.7-alpine AS build-env
+FROM golang:1.13.2-alpine AS build-env
 
-# Modified from original cosmos-sdk Dockerfile
 
 ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev
-ENV VERSION=v0.4.1
+ENV VERSION=v0.5.0
 
 # Set up dependencies
 RUN apk add --no-cache $PACKAGES
@@ -12,12 +11,11 @@ RUN apk add --no-cache $PACKAGES
 WORKDIR /go/src/github.com/regen-network/
 
 # Add source files
-RUN git clone --recursive https://www.github.com/regen-network/regen-ledger
+RUN git clone -b $VERSION https://github.com/regen-network/regen-ledger
 WORKDIR /go/src/github.com/regen-network/regen-ledger
-RUN git checkout $VERSION
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
-RUN make install
+RUN make
 
 
 # Final image
