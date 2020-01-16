@@ -1,4 +1,4 @@
-FROM golang:1.13.2-alpine AS build-env
+FROM golang:1.13.5-alpine AS build-env
 
 
 ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev
