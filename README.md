@@ -22,7 +22,7 @@ Dockerized Regen Node
 
 ## Quick Start
 
-The image can be run without any configuration and defaults to the *latest testnet*
+The image can be run without any configuration and defaults to the *regen-1*
 
 ```bash
 docker run --rm -d -p 1317:1317/tcp -p 26656:26656/tcp -p 26657:26657/tcp -p 26658:26658/tcp ryanhendricks/docker-regen:latest
@@ -42,19 +42,18 @@ docker run --rm -d -p 1317:1317/tcp -p 26656:26656/tcp -p 26657:26657/tcp -p 266
 You can set the following env variables either in a docker-compose file or in the docker run command if running the container directly. If left unchanged they will default to the values listed below.
 
 - MONIKER
-  - defaults to "regen-node"
+  - defaults to "nonamenode"
 - CHAIN_ID
-  - defaults to regen-test-1001
+  - defaults to regen-1
 - GENESIS_URL
-  - defaults to regen-test-1001 github [genesis file url](https://raw.githubusercontent.com/regen-network/testnets/master/regen-test-1001/genesis.json)
-
+  - defaults to regen-1 github [genesis file url](https://raw.githubusercontent.com/regen-network/mainnet/main/regen-1/genesis.json)
 
 ```bash
 # Example ENV variable from config.toml
 MONIKER=regen-node
 # The following variables (and their defaults) are set in the container creation entrypoint script and not set in config.toml:
-CHAIN_ID=regen-test-1001
-GENESIS_URL=https://raw.githubusercontent.com/regen-network/testnets/master/regen-test-1001/genesis.json
+CHAIN_ID=regen-1
+GENESIS_URL=https://raw.githubusercontent.com/regen-network/mainnet/main/regen-1/genesis.json
 ```
 
 ## Build
@@ -67,24 +66,18 @@ docker build --rm -f Dockerfile -t docker-regen:latest .
 
 ## Supervisor
 
-The image uses Supervisor to run both xrnd and xrncli simultaneously at container runtime. Supervisor also restarts either process should it fail for some reason.
+The image uses Supervisor to start regen at container runtime. Supervisor also restarts either process should it fail for some reason.
 
 ### Additional Info
 
-After starting the container you can check the status here: [http://127.0.0.1:26657/status](http://127.0.0.1:26657/status).
+After starting the container you can check the status here: [http://0.0.0.0:26657/status](http://0.0.0.0:26657/status).
 
 or from the terminal
 
 ```bash
 # Node
 curl -X GET \
-  http://127.0.0.1:26657/status? \
-  -H 'cache-control: no-cache'
-```
-```bash
-# Rest Server
-curl -X GET \
-  http://127.0.0.1:1317/blocks/latest \
+  http://0.0.0.0:26657/status? \
   -H 'cache-control: no-cache'
 ```
 

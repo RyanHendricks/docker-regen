@@ -8,9 +8,8 @@ services:
       dockerfile: Dockerfile
     environment: 
       - MONIKER=Regen-Node
-      - CHAIN_ID=regen-test-1001
-      - GENESIS_URL=https://raw.githubusercontent.com/regen-network/testnets/master/regen-test-1001/genesis.json
-      - VERSION=v0.4.1
+      - CHAIN_ID=regen-1
+      - VERSION=v1.0.0
     restart: always
     ports:
       - "26656:26656"
@@ -18,6 +17,6 @@ services:
       - "26658:26658"
       - "1317:1317" # for rest-server
     volumes:
-      - data:/.regen
+      - regen-data:/.regen
 volumes:
-  data:
+  regen-data:
