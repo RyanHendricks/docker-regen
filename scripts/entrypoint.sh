@@ -6,7 +6,7 @@ echo "setting up initial configurations"
 
 if [ ! -f "$REGEN_HOME/config/config.toml" ]; then
 
-	regen init "${MONIKER:-nonamenode}" --home="${REGEN_HOME:-/.regen}" --chain-id="${CHAIN_ID:-regen-1}"
+	regen init "${MONIKER:-regen-node}" --home="${REGEN_HOME:-/.regen}" --chain-id="${CHAIN_ID:-regen-1}"
 
 	cd "$REGEN_HOME/config"
 
