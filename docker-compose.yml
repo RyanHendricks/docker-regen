@@ -10,6 +10,8 @@ services:
       - MONIKER=Regen-Node
       - CHAIN_ID=regen-1
       - VERSION=v1.0.0
+      - PERSISTENT_PEERS=69975e7afdf731a165e40449fcffc75167a084fc@104.131.169.70:26656,d35d652b6cb3bf7d6cb8d4bd7c036ea03e7be2ab@116.203.182.185:26656,ffacd3202ded6945fed12fa4fd715b1874985b8c@3.98.38.91:26656
+      - SEEDS=aebb8431609cb126a977592446f5de252d8b7fa1@104.236.201.138:26656
     restart: always
     ports:
       - "26656:26656"

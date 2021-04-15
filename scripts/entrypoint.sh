@@ -549,4 +549,6 @@ EOF
 
 fi
 
-regen start --home=$REGEN_HOME
+echo "setup complete -- starting supervisor"
+
+exec supervisord --nodaemon --configuration /etc/supervisor/supervisord.conf
